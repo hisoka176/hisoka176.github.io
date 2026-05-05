@@ -69,9 +69,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-hllm原理介绍-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-hllm原理介绍" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2026/05/05/hllm%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D-md/" class="article-date">
+    <a href="/2026/05/05/hllm%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/" class="article-date">
   <time class="dt-published" datetime="2026-05-05T05:20:20.000Z" itemprop="datePublished">2026-05-05</time>
 </a>
     
@@ -83,7 +83,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/05/05/hllm%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D-md/">hllm原理介绍.md</a>
+      <a class="p-name article-title" href="/2026/05/05/hllm%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/">hllm原理介绍.md</a>
     </h1>
   
 
@@ -91,11 +91,28 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>ID类的推荐算法,存在的问题:</p>
+<ul>
+<li>冷启动困难</li>
+<li>能力欠佳</li>
+</ul>
+<p>llm 需要探索的内容:</p>
+<ol>
+<li>预训练的llm权重的真正价值</li>
+<li>有必要对推荐系统进行微调吗?</li>
+<li>llm 在推荐场景中是否呈现scaling law</li>
+</ol>
+<h1 id="method"><a href="#method" class="headerlink" title="method"></a>method</h1><p><img src="../images/user+item%20token.png" alt="user和item变为token输入"></p>
+<h1 id="模型组成"><a href="#模型组成" class="headerlink" title="模型组成"></a>模型组成</h1><p>包括两部分, item部分是embedding的lookup, user部分是item的交互序列</p>
+<h1 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h1><h2 id="生成式"><a href="#生成式" class="headerlink" title="生成式"></a>生成式</h2><p>使用大模型自回归的方式, Information Noise Contrastive Estimation（信息噪声对比估计）, 使用$ I_{t-1} $ 来预测$ I_t $, 相似度使用向量</p>
+<h2 id="判别式"><a href="#判别式" class="headerlink" title="判别式"></a>判别式</h2><p>分为两种方式, Early Fusion和Late Fusion, 实际落地以后者效果更佳</p>
+<p><img src="../images/判别式训练示意图.png" alt="判别式训练示意图"></p>
+<p>1) early fusion<br>将$Embedding E_{tgt}$</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hisoka176.github.io/2026/05/05/hllm%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D-md/" data-id="cmos6k2od0000am0j4z0j87bz" data-title="hllm原理介绍.md" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://hisoka176.github.io/2026/05/05/hllm%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/" data-id="cmosea6kr00012d0j5hepdzv1" data-title="hllm原理介绍.md" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -133,7 +150,7 @@
 <ol>
 <li>权重衰减和梯度更新解耦</li>
 <li>对每个参数自适应调整步长</li>
-<li>对transformer&#x2F;预训练模型效果好</li>
+<li>对transformer/预训练模型效果好</li>
 <li>收敛快</li>
 <li>调参成本高,先使用adamW,然后调整lr, 最后调整weight decay</li>
 </ol>
@@ -147,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hisoka176.github.io/2026/05/05/%E4%BC%98%E5%8C%96%E5%99%A8adamW-md/" data-id="cmos50b490000ssjo2hougvor" data-title="优化器adamW.md" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://hisoka176.github.io/2026/05/05/%E4%BC%98%E5%8C%96%E5%99%A8adamW-md/" data-id="cmosea6ks00032d0j5bdv8r4t" data-title="优化器adamW.md" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -176,27 +193,27 @@
         <hr>
 <h2 id="title-完成的所有事项"><a href="#title-完成的所有事项" class="headerlink" title="title: 完成的所有事项"></a>title: 完成的所有事项</h2><p>2026-05-03 09:26:18</p>
 <ul>
-<li><input checked="" disabled="" type="checkbox"> 美股上涨10%， 股票的第一目标不是取得收益，二是风险控制</li>
-<li><input checked="" disabled="" type="checkbox"> 通过例子学习rust完成</li>
-<li><input checked="" disabled="" type="checkbox"> <a target="_blank" rel="noopener" href="https://www.zhihu.com/column/c_1330965385378873344%EF%BC%8C">https://www.zhihu.com/column/c_1330965385378873344，</a> 四川大学工作3年的blog梳理了一下,<br>可以看出来都比较浅，但是有的知识我没有掌握，包括强化学习，对偶理论，希望可以补足一下自己的相关知识</li>
-<li><input checked="" disabled="" type="checkbox"> 学习一下opencode使用方式，整体架构</li>
-<li><input checked="" disabled="" type="checkbox"> 完成了大模型书，看完了一遍，希望可以看第二遍</li>
-<li><input checked="" disabled="" type="checkbox"> 美股上涨5%</li>
-<li><input disabled="" type="checkbox"> 对偶理论&amp;线性优化</li>
-<li><input disabled="" type="checkbox"> 强化学习，pdf阅读</li>
-<li><input checked="" disabled="" type="checkbox"> firstrade, ib的账号想办法开通|</li>
-<li><input checked="" disabled="" type="checkbox"> hexo运行,并且部署成功了</li>
-<li><input disabled="" type="checkbox"> opencode阅读源码</li>
-<li><input disabled="" type="checkbox"> 构建一个pdf的集合，github仓库</li>
-<li><input disabled="" type="checkbox"> zig学习</li>
-<li><input disabled="" type="checkbox"> typescript 学习</li>
-<li><input disabled="" type="checkbox"> 广告算法的整体处理</li>
+<li>[x] 美股上涨10%， 股票的第一目标不是取得收益，二是风险控制</li>
+<li>[x] 通过例子学习rust完成</li>
+<li>[x] <a target="_blank" rel="noopener" href="https://www.zhihu.com/column/c_1330965385378873344，">https://www.zhihu.com/column/c_1330965385378873344，</a> 四川大学工作3年的blog梳理了一下,<br>可以看出来都比较浅，但是有的知识我没有掌握，包括强化学习，对偶理论，希望可以补足一下自己的相关知识</li>
+<li>[x] 学习一下opencode使用方式，整体架构</li>
+<li>[x] 完成了大模型书，看完了一遍，希望可以看第二遍</li>
+<li>[x] 美股上涨5%</li>
+<li>[ ] 对偶理论&amp;线性优化</li>
+<li>[ ] 强化学习，pdf阅读</li>
+<li>[x] firstrade, ib的账号想办法开通|</li>
+<li>[x] hexo运行,并且部署成功了</li>
+<li>[ ] opencode阅读源码</li>
+<li>[ ] 构建一个pdf的集合，github仓库</li>
+<li>[ ] zig学习</li>
+<li>[ ] typescript 学习</li>
+<li>[ ] 广告算法的整体处理</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hisoka176.github.io/2026/05/03/to%20do%20list/" data-id="cmmrtwmzj0001vf0jesblf2kv" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://hisoka176.github.io/2026/05/03/to%20do%20list/" data-id="cmosea6ks00022d0j4mp0gbua" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -231,14 +248,13 @@
 <li>规划要尽可能解除到结果,否则自己的计划慢慢也会变得毫无意义|</li>
 <li>感觉自己玩游戏时间有点长,珍惜自己的时间,降低自己多巴胺的一些行为, 或许你只有理智, 却没有感情,无法产生深度的交互,因为你见识得太多了, 失望了得太多了已经不愿意做一些没有确定性的东西了|</li>
 <li>看到不如你的， 你可以看到别人的缺点，化作自己的动力，但是当你看到更优秀的人的时候，看到的是你的恐惧</li>
-<li>非常恐惧的是，不能继续从事你喜欢的事业了</li>
-<li></li>
+<li>非常恐惧的是，不能继续从事你喜欢的事业了<br>11.</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hisoka176.github.io/2026/05/03/thinking/" data-id="cmmrtwmzh0000vf0jd74d9wtt" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://hisoka176.github.io/2026/05/03/thinking/" data-id="cmosea6kp00002d0jhs683hcp" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -287,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hisoka176.github.io/2026/05/02/%E9%87%8F%E5%8C%96%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%80%EF%BC%89/" data-id="cmmrtwmzk0002vf0jap6663yd" data-title="量化系列（一）" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://hisoka176.github.io/2026/05/02/%E9%87%8F%E5%8C%96%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%80%EF%BC%89/" data-id="cmosea6kt00062d0jau0tdcla" data-title="量化系列（一）" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -334,7 +350,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hisoka176.github.io/2026/05/02/business/" data-id="cmoo5qx8y0000bw0j05gd4fqo" data-title="我的商业计划书" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://hisoka176.github.io/2026/05/02/business/" data-id="cmosea6kt00072d0jbxac5yt6" data-title="我的商业计划书" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -377,13 +393,13 @@
 <p>广告主可能离开的分类:</p>
 <ol>
 <li>投放成本超过预期</li>
-<li>广告主历史数据的缺失,导致ctr&#x2F;cvr偏低,造成广告主无法拿到流量, 冷启动慢等问题</li>
+<li>广告主历史数据的缺失,导致ctr/cvr偏低,造成广告主无法拿到流量, 冷启动慢等问题</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hisoka176.github.io/2026/03/19/%E5%B9%BF%E5%91%8A%E5%BD%93%E4%B8%AD%E7%9A%84%E5%86%B7%E5%90%AF%E5%8A%A8%E7%AD%96%E7%95%A5/" data-id="cmnbv793o0000m40jdv44aeas" data-title="广告当中的冷启动策略" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://hisoka176.github.io/2026/03/19/%E5%B9%BF%E5%91%8A%E5%BD%93%E4%B8%AD%E7%9A%84%E5%86%B7%E5%90%AF%E5%8A%A8%E7%AD%96%E7%95%A5/" data-id="cmosea6ks00042d0jch2agnso" data-title="广告当中的冷启动策略" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -442,7 +458,7 @@
       <ul>
         
           <li>
-            <a href="/2026/05/05/hllm%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D-md/">hllm原理介绍.md</a>
+            <a href="/2026/05/05/hllm%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/">hllm原理介绍.md</a>
           </li>
         
           <li>
@@ -508,5 +524,20 @@
 
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
